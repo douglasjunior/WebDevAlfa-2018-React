@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Projeto React Web</title>
+
+  <script crossorigin src="https://unpkg.com/react@16.2.0/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16.2.0/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/create-react-class@15.6.2/create-react-class.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script>
+    function BemVindoComponent(props) {
+      return React.createElement('h1',
+        { style: { color: props.cor } },
+        'Bem Vindo ' + props.nome);
+    }
+    function ConteudoComponent(props) {
+      return React.createElement('p', null, props.texto);
+    }
+    function ArtigoComponent(props) {
+      return [
+        React.createElement(BemVindoComponent, { nome: props.nome }),
+        React.createElement(ConteudoComponent, { texto: props.texto })
+      ]
+    }
+
+    var artigo = React.createElement(ArtigoComponent, {
+      nome: 'Douglas',
+      texto: 'Aula de Programação Web com React JS'
+    })
+    var artigo2 = React.createElement(ArtigoComponent, {
+      nome: 'Burnes',
+      texto: 'Aula de Programação Gambiarra com PHP'
+    })
+
+    var ContadorComponent = createReactClass({
+      getInitialState: function () {
+        return {
+          numero: 0
+        };
+      },
+      componentDidMount: function () {
+        var self = this;
+        setInterval(function () {
+          self.setState({
+            numero: self.state.numero + 1
+          })
+        }, self.props.tempo);
+      },
+      render: function () {
+        return React.createElement('p', null, this.state.numero);
+      }
+    });
+
+    var contador = React.createElement(ContadorComponent, { tempo: 500 });
+    var contador2 = React.createElement(ContadorComponent, { tempo: 700 });
+
+    var pagina = React.createElement('div', null, [
+      artigo, artigo2, contador, contador2
+    ]);
+
+    ReactDOM.render(
+      pagina,
+      document.getElementById('root')
+    );
+  </script>
+</body>
+
+</html>
