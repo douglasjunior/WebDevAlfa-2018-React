@@ -1,29 +1,34 @@
 import React, { Component } from 'react';
 
+import { Container } from 'reactstrap';
+import {
+  HashRouter,
+  Link,
+  Route
+} from 'react-router-dom';
+
 import './App.css';
 
-import Artigo from '../components/Artigo';
-import Contador from '../components/Contador';
+import HomePage from './HomePage';
+import TarefasPage from './TarefasPage';
+import SobrePage from './SobrePage';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <HashRouter>
+        <Container>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/tarefas">Tarefas</Link></li>
+            <li><Link to="/sobre">Sobre</Link></li>
+          </ul>
 
-        <Artigo
-          nome="Douglas"
-          texto="Programação Web com React JS"
-        />
-
-        <Artigo
-          nome="Burnes"
-          texto="Programação Web com PHP"
-        />
-
-        <Contador tempo={500} />
-        <Contador />
-
-      </div>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/tarefas" component={TarefasPage} />
+          <Route path="/sobre" component={SobrePage} />
+        </Container>
+      </HashRouter>
     );
   }
 }
