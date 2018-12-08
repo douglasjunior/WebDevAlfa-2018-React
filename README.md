@@ -4,4 +4,4 @@
 
 Slides: https://github.com/douglasjunior/WebDevAlfa-2018-React/blob/master/Slides%20-%20React%20JS.pdf
 
-Avaliação: --
+Avaliação: https://github.com/douglasjunior/WebDevAlfa-2018-React/tree/master/Avaliação
