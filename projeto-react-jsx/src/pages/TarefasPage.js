@@ -24,7 +24,7 @@ class TarefasPage extends Component {
   render() {
     const tarefasLinks = TAREFAS.map((tarefa, index) => {
       return (
-        <li>
+        <li key={tarefa.id}>
           <Link to={`/tarefas/${tarefa.id}`}>
             {tarefa.titulo}
           </Link>
